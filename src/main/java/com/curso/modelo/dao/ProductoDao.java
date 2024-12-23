@@ -19,7 +19,7 @@ public class ProductoDao {
 	}
 
 	/**
-	 * Función que realiza un select de toda la tabla producti
+	 * Función que realiza un select de toda la tabla producto
 	 * 
 	 * @return Lista de productos que están en la tabla producto
 	 */
@@ -27,7 +27,6 @@ public class ProductoDao {
 		List<Producto> productos = new ArrayList<Producto>();
 
 		if (c != null) {
-			System.out.println("Conectado correctamente");
 			try (PreparedStatement ps = c.prepareStatement("SELECT * FROM producto")) {
 
 				ResultSet rs = ps.executeQuery();
@@ -43,5 +42,36 @@ public class ProductoDao {
 			System.err.println("No se ha podido conectar con la BD");
 		}
 		return productos;
+	}
+
+	public void insertProducto(Producto p) {
+		if (c != null) {
+			try (PreparedStatement ps = c
+					.prepareStatement("INSERT INTO producto (nombre, categoria, precio, stock) VALUES (?,?,?,?)")) {
+				ps.setInt(1, p.getId());
+				ps.setString(2, p.getNombre());
+				ps.setString(3, p.getCategoria().name());
+				ps.setDouble(4, p.getPrecio());
+				ps.setInt(5, p.getStock());
+				ps.executeQuery();
+			} catch (SQLException e) {
+				System.err.println("ERROR: No se ha podido realizar la operación. \n" + e);
+			}
+		} else {
+			System.err.println("No se ha podido conectar con la BD");
+		}
+	}
+
+	public void deleteByID(int id) {
+		if (c != null) {
+			try (PreparedStatement ps = c.prepareStatement("DELETE FROM producto WHERE id = ?")) {
+				ps.setInt(1, id);
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				System.err.println("ERROR: No se ha podido realizar la operación. \n" + e);
+			}
+		} else {
+			System.err.println("No se ha podido conectar con la BD");
+		}
 	}
 }

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import com.curso.conexion.ConexionBD;
 import com.curso.modelo.Categoria;
 import com.curso.modelo.Producto;
+import com.curso.modelo.dao.ProductoDao;
 import com.curso.service.AlmacenService;
 
 import jakarta.servlet.ServletException;
@@ -25,6 +26,7 @@ public class AddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		ProductoDao dao = new ProductoDao();
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE html>");
@@ -34,11 +36,10 @@ public class AddServlet extends HttpServlet {
 		out.println("<title>Agreando Producto</title>");
 		out.println("</head>");
 		out.println("<body style='background-color: #c4fffc'>");
-		Connection c = null;
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			boolean idExiste = false;
-			for (Producto p : AlmacenService.getAlmacen()) {
+			for (Producto p : AlmacenService.getAlmacenBD()) {
 				if (p.getId() == id) {
 					idExiste = true;
 					break;
@@ -64,11 +65,9 @@ public class AddServlet extends HttpServlet {
 					stock = 0;
 				}
 
-				//AlmacenService.getAlmacen().add(new Producto(id, nombre, categoria, precio, stock));
-				c = ConexionBD.conexionDataSource();
-				if(c != null) {
-					PreparedStatement ps = c.prepareStatement("");
-				}
+				// AlmacenService.getAlmacen().add(new Producto(id, nombre, categoria, precio,
+				// stock));
+				dao.insertProducto(new Producto(id, nombre, categoria, precio, stock));
 
 				out.println("<h3 align='center'> EL PRODUCTO [" + id + "] HA SIDO INSERTADO </h3>");
 			}

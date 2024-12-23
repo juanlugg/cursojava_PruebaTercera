@@ -46,7 +46,7 @@ public final class Producto {
 		this.precio = precio;
 	}
 
-	public double getStock() {
+	public int getStock() {
 		return stock;
 	}
 
