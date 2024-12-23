@@ -2,7 +2,10 @@ package com.curso.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
+import com.curso.conexion.ConexionBD;
 import com.curso.modelo.Categoria;
 import com.curso.modelo.Producto;
 import com.curso.service.AlmacenService;
@@ -15,7 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.0.0 17/12/2024 Clase Servlet que gestionará el añadir un producto
+ * @version 1.1.0 20/12/2024 Clase Servlet que gestionará el añadir un producto
  */
 public class AddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +34,7 @@ public class AddServlet extends HttpServlet {
 		out.println("<title>Agreando Producto</title>");
 		out.println("</head>");
 		out.println("<body style='background-color: #c4fffc'>");
+		Connection c = null;
 		try {
 			int id = Integer.parseInt(request.getParameter("id"));
 			boolean idExiste = false;
@@ -60,7 +64,11 @@ public class AddServlet extends HttpServlet {
 					stock = 0;
 				}
 
-				AlmacenService.getAlmacen().add(new Producto(id, nombre, categoria, precio, stock));
+				//AlmacenService.getAlmacen().add(new Producto(id, nombre, categoria, precio, stock));
+				c = ConexionBD.conexionDataSource();
+				if(c != null) {
+					PreparedStatement ps = c.prepareStatement("");
+				}
 
 				out.println("<h3 align='center'> EL PRODUCTO [" + id + "] HA SIDO INSERTADO </h3>");
 			}

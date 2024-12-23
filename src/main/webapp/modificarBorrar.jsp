@@ -22,7 +22,7 @@
 	<%if(accion.equals("BORRAR")){%>
 		<h3>¿Deseas eliminar este producto?</h3>
 		<p><%=producto.toString()%></p>
-		<p align="center">
+		<div align="center">
 			<form action="BorrarServlet" method="get">
 			<input type="hidden" name="producto" value="<%=producto.getId()%>">
 			<input type="submit" value="ACEPTAR" > 
@@ -31,7 +31,7 @@
 		<form action="javascript:history.back()"> 
 			<input type="submit" value="CANCELAR" > 
 		</form> 
-	</p>
+	</div>
 	<%}%>
 
 <%if(accion.equals("MODIFICAR")){%>

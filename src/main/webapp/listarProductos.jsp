@@ -28,13 +28,13 @@
 				<th>Stock</th>
 				<th>----</th>			
 			</tr>
-	<%for(Producto p : AlmacenService.getAlmacen()){%>
+	<%for(Producto p : AlmacenService.getAlmacenBD()){%>
 			<tr>
-				<td><%=p.getId()%></th>
-				<td><%=p.getNombre()%></th>
-				<td><%=p.getCategoria()%></th>
-				<td><%=p.getPrecio()%></th>
-				<td><%=p.getStock()%></th>
+				<td><%=p.getId()%></td>
+				<td><%=p.getNombre()%></td>
+				<td><%=p.getCategoria()%></td>
+				<td><%=p.getPrecio()%></td>
+				<td><%=p.getStock()%></td>
 				<td>
 					<form action="modificarBorrar.jsp" method="get">
 						<input type="hidden" name="id" value="<%=p.getId()%>">

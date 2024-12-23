@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.0.0 17/12/2024 Clase Servlet que tendrá como una función de Menu
+ * @version 1.1.0 20/12/2024 Clase Servlet que tendrá como una función de Menu
  *          que navegará a otras opciones
  */
 public class MenuServlet extends HttpServlet {
@@ -25,17 +25,14 @@ public class MenuServlet extends HttpServlet {
 		String opcion = request.getParameter("opcion");
 		String nav = "";
 		switch (opcion) {
-		case "LISTAR PRODUCTOS": {
+		case "LISTA DE PRODUCTOS": {
 			nav = "listarProductos.jsp";
 			break;
 		}
-		case "AÑADIR PRODUCTO": {
+		case "AGREGAR PRODUCTO": {
 			nav = "addProducto.jsp";
 		}
 			break;
-		/*
-		 * } case "MODIFICAR PRODUCTO": { break; } case "ELIMINAR PRODUCTO": { break; }
-		 */
 		}
 		request.getRequestDispatcher(nav).include(request, response);
 
