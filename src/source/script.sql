@@ -1,0 +1,9 @@
+CREATE SCHEMA `almacen` ;
+
+CREATE TABLE `almacen`.`producto` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NOT NULL,
+  `categoria` ENUM('ALIMENTICIO', 'HIGIENE', 'LIMPIEZA', ' OCIO', 'PAPELERIA', 'DEPORTE', 'ENFERMERIA', 'TECNOLOGIA') NOT NULL,
+  `precio` DECIMAL(7,2) NULL,
+  `stock` INT NULL,
+  PRIMARY KEY (`id`));
