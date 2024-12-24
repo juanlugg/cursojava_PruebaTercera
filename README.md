@@ -1,4 +1,4 @@
-# SEGUNDA PRUEBA CURSO JAVA
+# TERCERA PRUEBA CURSO JAVA
 ## Juan Luis Guerra Gennich 24/12/2024
 
 ### Descripción
