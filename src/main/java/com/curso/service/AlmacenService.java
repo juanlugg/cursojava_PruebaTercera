@@ -15,7 +15,7 @@ import com.curso.modelo.Producto;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.1.0 20/12/2024 Clase que contiene la lista de productos que ya
+ * @version 2.0.0 20/12/2024 Clase que contiene la lista de productos que ya
  *          están guardados
  */
 
@@ -33,11 +33,20 @@ public class AlmacenService {
 					new Producto(9, "Agua oxigenada", Categoria.ENFERMERIA, 3.50, 76),
 					new Producto(10, "Queso", Categoria.ALIMENTICIO, 2.0, 240)));
 
+	/**
+	 * Función que devuelve una lista estatica de almacen
+	 * Sirve para pruebas ajenas a bases de datos
+	 * @return Lista persistente durante la ejecución
+	 */
 	@Deprecated
 	public static List<Producto> getAlmacen() {
 		return almacen;
 	}
 
+	/**
+	 * Función que devuelve una lista de la base de datos de almacen
+	 * @return Lista de la tabla producto de la base de datos almacen
+	 */
 	public static List<Producto> getAlmacenBD() {
 		List<Producto> lista = new ArrayList<Producto>();
 		Connection c = ConexionBD.conexionDataSource();

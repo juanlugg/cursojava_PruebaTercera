@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.0.0 17/12/2024 
+ * @version 2.0.0 24/12/2024 
  * Clase Servlet que gestionará el borrado del producto
  */
 public class BorrarServlet extends HttpServlet {

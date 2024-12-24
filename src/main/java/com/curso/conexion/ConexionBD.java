@@ -9,6 +9,12 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
+/**
+ * 
+ * @author Juan Luis Guerra Gennich
+ * @version 2.0.0 24/12/2024 Clase que realizará la conexión con la Base de Datos
+ */
 public class ConexionBD {
 	private static final String URL = "jdbc:mysql://localhost:3306/";
 	private static final String USER = "root";
@@ -32,7 +38,7 @@ public class ConexionBD {
 		try {
 			Context initContext = new InitialContext();
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			ds = (DataSource) envContext.lookup("jdbc/AlmacenDataSource"); 
+			ds = (DataSource) envContext.lookup("jdbc/AlmacenDataSource");
 			c = ds.getConnection();
 		} catch (NamingException | SQLException e) {
 			e.printStackTrace();

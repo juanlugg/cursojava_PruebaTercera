@@ -3,7 +3,7 @@ package com.curso.modelo;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.0.0 17/12/2024 Clase que representa lo que será un objeto de
+ * @version 2.0.0 24/12/2024 Clase que representa lo que será un objeto de
  *          producto
  */
 public final class Producto {
@@ -20,6 +20,10 @@ public final class Producto {
 		this.categoria = categoria;
 		this.precio = precio;
 		this.stock = stock;
+	}
+
+	public Producto() {
+		super();
 	}
 
 	public String getNombre() {

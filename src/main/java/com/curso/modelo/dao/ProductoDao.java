@@ -11,6 +11,12 @@ import com.curso.conexion.ConexionBD;
 import com.curso.modelo.Categoria;
 import com.curso.modelo.Producto;
 
+/**
+ * 
+ * @author Juan Luis Guerra Gennich
+ * @version 2.0.0 24/12/2024 Clase que representa las sentencias para
+ * manipular la tabla producto de la base de datos almacen
+ */
 public class ProductoDao {
 	private Connection c = null;
 
@@ -47,13 +53,13 @@ public class ProductoDao {
 	public void insertProducto(Producto p) {
 		if (c != null) {
 			try (PreparedStatement ps = c
-					.prepareStatement("INSERT INTO producto (nombre, categoria, precio, stock) VALUES (?,?,?,?)")) {
+					.prepareStatement("INSERT INTO producto (id, nombre, categoria, precio, stock) VALUES (?,?,?,?,?)")) {
 				ps.setInt(1, p.getId());
 				ps.setString(2, p.getNombre());
 				ps.setString(3, p.getCategoria().name());
 				ps.setDouble(4, p.getPrecio());
 				ps.setInt(5, p.getStock());
-				ps.executeQuery();
+				ps.executeUpdate();
 			} catch (SQLException e) {
 				System.err.println("ERROR: No se ha podido realizar la operación. \n" + e);
 			}
@@ -66,6 +72,25 @@ public class ProductoDao {
 		if (c != null) {
 			try (PreparedStatement ps = c.prepareStatement("DELETE FROM producto WHERE id = ?")) {
 				ps.setInt(1, id);
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				System.err.println("ERROR: No se ha podido realizar la operación. \n" + e);
+			}
+		} else {
+			System.err.println("No se ha podido conectar con la BD");
+		}
+	}
+	
+	public void updateProducto(Producto p) {
+		if (c != null) {
+			System.out.println("Conectado correctamente");
+			try (PreparedStatement ps = c
+					.prepareStatement("UPDATE producto set nombre = ?, categoria = ?, precio = ?, stock = ? WHERE id = ?")) {
+				ps.setString(1, p.getNombre());
+				ps.setString(2, p.getCategoria().name());
+				ps.setDouble(3, p.getPrecio());
+				ps.setInt(4, p.getStock());
+				ps.setInt(5, p.getId());
 				ps.executeUpdate();
 			} catch (SQLException e) {
 				System.err.println("ERROR: No se ha podido realizar la operación. \n" + e);

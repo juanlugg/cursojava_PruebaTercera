@@ -14,7 +14,7 @@
 	String accion = request.getParameter("modificar");
 	int id = Integer.parseInt(request.getParameter("id"));
 	Producto producto = null;
-	for (Producto p : AlmacenService.getAlmacen()){
+	for (Producto p : AlmacenService.getAlmacenBD()){
 		if(p.getId() == id)
 			producto = p;
 	}%>	

@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * 
  * @author Juan Luis Guerra Gennich
- * @version 1.1.0 20/12/2024 Clase Servlet que tendrá como una función de Menu
+ * @version 2.0.0 24/12/2024 Clase Servlet que tendrá como una función de Menu
  *          que navegará a otras opciones
  */
 public class MenuServlet extends HttpServlet {
