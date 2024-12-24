@@ -17,15 +17,16 @@
 	</div>
 	<div align="center">
 		<form action="AddServlet" method="get">
-			<input type="text" name="id"> 
-			<input type="text" name="nombre">
-			<select name="categoria"> 
-				<% for(Categoria c : Categoria.values()){%>
-			<option value="<%=c%>"><%=c%></option>	
-			<%}%>
-			</select>
-			<input type="number" name="precio" step="0.01"> 
-			<input type="number" name="stock"> 
+			ID: <input type="text" name="id"> 
+			Nombre: <input type="text" name="nombre">
+			Categoria: <select name="categoria"> 
+							<% for(Categoria c : Categoria.values()){%>
+						<option value="<%=c%>"><%=c%></option>	
+							<%}%>
+						</select>
+			<br><br><br>
+			Precio: <input type="number" name="precio" step="0.01" style="width: 75px;"> 
+			Stock: <input type="number" name="stock" style="width: 75px;"> 
 			<input type="submit" value="ACEPTAR">
 		</form>
 	</div>

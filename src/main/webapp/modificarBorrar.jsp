@@ -47,8 +47,8 @@
 			%> <option value="<%=c%>" <%= c.equals(producto.getCategoria()) ? "selected" : "" %>><%=c%></option>	
 			<%}%>
 			</select>
-			<input type="text" name="precio" value="<%=producto.getPrecio()%>">
-			<input type="text" name="stock" value="<%=producto.getStock()%>">	
+			<input type="text" name="precio" value="<%=producto.getPrecio()%>" style="width: 75px;">
+			<input type="text" name="stock" value="<%=producto.getStock()%>" style="width: 75px;">	
 			<input type="submit" value="ACEPTAR" > 
 		</form>  
 		<br>

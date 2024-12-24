@@ -25,7 +25,7 @@ public class MenuServlet extends HttpServlet {
 		String opcion = request.getParameter("opcion");
 		String nav = "";
 		switch (opcion) {
-		case "LISTA DE PRODUCTOS": {
+		case "VER/EDITAR PRODUCTOS": {
 			nav = "listarProductos.jsp";
 			break;
 		}
